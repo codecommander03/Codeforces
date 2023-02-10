@@ -1,0 +1,36 @@
+
+#include <bits/stdc++.h>
+// G1
+using namespace std;
+ 
+void solve(){
+    int n,coin;
+    cin>>n>>coin;
+    priority_queue<int> pq;
+    for(int i=1;i<=n;i++){
+        int temp;
+        cin>>temp;
+        pq.push(-i-temp);
+    }
+    int ans=0;
+    while(!pq.empty()){
+        int temp = -pq.top();
+        pq.pop();
+        if(temp<=coin){
+            ans++;
+            coin-=temp;
+        }
+        else break;
+    }
+ 
+    cout<<ans<<endl;
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=-1;
+    cin>>t;
+    while(t--) solve();
+}
