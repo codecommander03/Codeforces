@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+// F
+using namespace std;
+int digisum(int x){
+    int ans=0;
+    while(x>0){
+        ans+=x%10;
+        x /= 10;
+    }
+    return ans;
+}
+void solve(){
+    int n,q;
+    cin>>n>>q;
+    vector<int> v(n);
+    set<int> s;
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+        if(v[i]>9) s.insert(i);
+    }
+    while(q--){
+        int query;
+        cin>>query;
+        if(query==1){
+            int l,r;
+            cin>>l>>r;
+            l--,r--;
+            int low=l;
+            while(!s.empty()){
+                auto itr = s.lower_bound(low);
+                // *itr will give index
+                if(itr==s.end() || *itr>r) break;
+                v[*itr] = digisum(v[*itr]);
+                /*if(v[*itr]<10) s.erase(itr);
+                low = *itr+1;*/
+                int temp = *itr;
+                s.erase(itr);
+                if(v[temp]>9) s.insert(temp);
+                low=temp+1;
+            }
+        }
+        else{
+            int x;
+            cin>>x;
+            cout<<v[x-1]<<"\n";
+        }
+    }
+    v.clear();
+    s.clear();
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=-1;
+    cin>>t;
+    while(t--) solve();
+}
