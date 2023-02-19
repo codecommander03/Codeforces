@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void solve(){
+    int n;
+    cin>>n;
+    //vector<int> v(n);
+    map<int,int> m;
+    set<int> s;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        //cin>>a[i];
+        m[x]++;
+        s.insert(x);
+        s.insert(x+1);
+    }
+    int last=0;
+    int ans=0;
+    for(auto it: s){
+        int x = m[it];
+        ans+=max(0,x-last);
+        last = x;
+    }
+    cout<<ans<<endl;
+    m.clear();
+    s.clear();
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=-1;
+    cin>>t;
+    while(t--) solve();
+}
