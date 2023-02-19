@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+string s="314159265358979323846264338327";
+void solve(){
+    string x;
+    cin>>x;
+    int ans=0;
+    for(int i=0;i<30;i++){
+        if(s[i]!=x[i]){
+            break;
+        }
+        else{
+            ans=i+1;
+        }
+    }
+    cout<<ans<<endl;
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=-1;
+    cin>>t;
+    while(t--) solve();
+ 
+	return 0;
+ 
+}
