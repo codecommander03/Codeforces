@@ -1,0 +1,56 @@
+
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+void solve(){
+    int n;
+    cin>>n;
+    vector<vector<int>> v(n,vector<int>(n-1,0));
+    vector<int> zz(n,0);
+    int help=0;
+    //unordered_map<int> m;
+    pair<int,int> a={0,0},b={0,0},c={0,0};
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n-1;j++){
+            cin>>v[i][j];
+            if(j==0){
+                //zz[i]=v[i][0];
+                if(a.first==0) a={v[i][0],i};
+                else if(a.first && v[i][0]!=a.first){
+                    b = {v[i][0],i};
+                }
+            }
+        }
+    }
+    int a_count=0,b_count=0;
+ 
+    for(int i=0;i<3;i++){
+        if(v[i][0]==a.first) a_count++;
+        else b_count++;
+    }
+    if(a_count>b_count){
+        help=a.first;
+        zz=v[b.second];
+    }
+    else{
+        help=b.first;
+        zz=v[a.second];
+    }
+    cout<<help<<" ";
+    for(int i=0;i<n-1;i++){
+        cout<<zz[i]<<" ";
+    }
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=1;
+    cin>>t;
+    while(t--) solve();
+ 
+	return 0;
+ 
+}
