@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+ 
+void solve(){
+  
+    ll n;
+    cin >> n;
+    vector < ll > v(n);
+    //cin >> v;
+    vector < ll > ans(n + 1,0);
+    for(int i = 0; i < n; i++){
+        cin>>v[i];
+        ans[i + 1] = ans[i] + v[i];
+    }
+    
+    auto query = [&](ll l, ll r) -> ll {
+        cout << "? " << r - l + 1 << " ";
+        for(int i = l; i <= r; i++){
+        if(i == r) cout << i << "\n";
+        else cout << i << " ";
+        }
+        cout.flush();   
+        ll num;
+        cin >> num;
+        return num;
+    };
+    
+    ll l = 1, r = n;
+    while(l <= r){
+        ll mid = (l + r) / 2;
+        ll num = query(l, mid);
+        if (num > ans[mid] - ans[l - 1]) r = mid - 1;
+        else l = mid + 1;
+    }
+    cout << "! " << l << "\n";
+    cout.flush();
+ 
+}
+ 
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--){ 
+        solve();
+    }   
+    return 0;
+}
