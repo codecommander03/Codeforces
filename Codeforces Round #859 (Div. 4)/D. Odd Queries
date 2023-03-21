@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+void solve(){
+    ll n,q,sum=0;
+    cin>>n>>q;
+    vector<ll> v(n),pre(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+        sum+=v[i];
+        pre[i]=sum;
+    }
+    
+    while(q--){
+        ll l,r,k;
+        cin>>l>>r>>k;
+        ll replace = pre[r-1]-(pre[l-1]-v[l-1]);
+        ll ans = sum-replace + (r-l+1)*k;
+ 
+        if(ans%2==1) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+        //cout<<left<<" "<<(r-l+1)*k<<" "<<right<<endl;
+    }
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int t=-1;
+    cin>>t;
+    while(t--) solve();
+}
