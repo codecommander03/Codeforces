@@ -1,3 +1,1 @@
-**Codeforces codes**
-<br>
-my Id: https://codeforces.com/profile/codecommander
+**All my Codeforces codes**
