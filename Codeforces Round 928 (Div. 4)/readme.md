@@ -1,1 +1,0 @@
-Revisit E (did, but just identifying the pattern was the difficult part)
