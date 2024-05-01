@@ -63,8 +63,8 @@ void solve(){
     dp[0][0] = 0;
 
     for (int i = 0; i < n;i++){
-        int mn = v[i];
         for (int h = 0; h <= k;h++){
+            int mn = v[i];
             for (int j = i;j<n && h+j-i<=k;j++){ // i to j min. element
                 mn = std::min(mn, v[j]);
                 dp[j + 1][h + j - i] = std::min(dp[j + 1][h + j - i], dp[i][h] + mn * (j - i + 1));
